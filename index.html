@@ -13,14 +13,22 @@
       padding: 0;
     }
     header {
-      background: #003366;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/64/Prague_Cityscape.jpg');
+      background-size: cover;
+      background-position: center;
       color: white;
-      padding: 2rem;
+      padding: 5rem 2rem;
       text-align: center;
     }
-    h1 {
+    header h1 {
+      font-size: 3rem;
       margin: 0;
-      font-size: 2.5rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    }
+    header p {
+      font-size: 1.25rem;
+      margin-top: 1rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
     }
     .bio {
       font-size: 1.05rem;
@@ -82,13 +90,19 @@
   </style>
 </head>
 <body>
+  <nav style="background-color: #003366; padding: 1rem; text-align: center;">
+    <a href="#" style="color: white; margin: 0 1rem; text-decoration: none; font-weight: bold;">Home</a>
+    <a href="#about" style="color: white; margin: 0 1rem; text-decoration: none; font-weight: bold;">About</a>
+    <a href="#contact" style="color: white; margin: 0 1rem; text-decoration: none; font-weight: bold;">Contact</a>
+    <a href="https://www.instagram.com/yxng.quade" target="_blank" style="color: white; margin: 0 1rem; text-decoration: none; font-weight: bold;">Instagram</a>
+  </nav>
   <header>
     <h1>Quade's Journal</h1>
     <p>Selected writing by Quade Young</p>
   </header>
   <div class="bio">
-  I'm a multidisciplinary writer exploring culture, identity, and digital media through personal storytelling and research. From mental health and algorithmic echo chambers to food, travel, and street life, I aim to keep my work honest, grounded, and focused on stories that matter.
-</div>
+    I'm a multidisciplinary writer exploring culture, identity, and digital media through personal storytelling and research. From mental health and algorithmic echo chambers to food, travel, and street life, I aim to keep my work honest, grounded, and focused on stories that matter.
+  </div>
   <div class="content">
     <div class="article">
       <h2><a href="https://quadelyoung.github.io/Quades-Journal/Mental%20Illness%20&%20Healthcare%20Issues%20FC.pdf" target="_blank">Mental Illness and Healthcare Issues</a></h2>
@@ -111,12 +125,12 @@
       <p>A media theory thesis that analyzes how social media echo chambers distort truth and representation in digital platforms.</p>
     </div>
   </div>
-  <div class="contact">
+  <div class="contact" id="contact">
     <h3>Contact</h3>
     <p>Email: <a href="mailto:quadeyoung@gmail.com">quadeyoung@gmail.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/quadeyoung/" target="_blank">linkedin.com/in/quadeyoung</a></p>
   </div>
-  <div class="about">
+  <div class="about" id="about">
     <h3>About Me</h3>
     <img src="CountryQuade.png" alt="Photo of Quade Young" />
     <p>Hey, I’m Quade — a writer passionate about telling stories that reveal something real, whether it’s about digital media, street basketball in Prague, or late-night rooftop drinks in Istanbul. I’ve studied journalism and media, and I use my writing to explore identity, culture, and connection in unexpected places.</p>
