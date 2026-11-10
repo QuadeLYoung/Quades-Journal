@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Quade's Journal</title>
+<meta name="description" content="Selected writing by Quade Young on culture, identity, travel, and digital media.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@8..60,400..600&display=swap">
+<style>
+/* Layout concept: a writer's dispatch index. Big condensed masthead, a route line between Prague and Istanbul,
+   one featured thesis panel, then a ruled ledger of pieces, each stamped with its place and coordinates. */
+:root {
+  --paper: #EDF0EC;
+  --surface: #E1E7E2;
+  --ink: #101C1B;
+  --ink-2: #44524F;
+  --rule: #BCC7C1;
+  --accent: #0B5D70;
+  --mark: #F0C419;
+  --on-mark: #101C1B;
+  --feature: #0D4251;
+  --feature-fg: #F0F5F2;
+  --feature-muted: #B4CDD2;
+  --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1413;
+    --surface: #142120;
+    --ink: #E8EFEB;
+    --ink-2: #9DAFAB;
+    --rule: #253836;
+    --accent: #5CC7D8;
+    --feature: #12333B;
+    --feature-fg: #EAF1EE;
+    --feature-muted: #9DBFC5;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1413;
+  --surface: #142120;
+  --ink: #E8EFEB;
+  --ink-2: #9DAFAB;
+  --rule: #253836;
+  --accent: #5CC7D8;
+  --feature: #12333B;
+  --feature-fg: #EAF1EE;
+  --feature-muted: #9DBFC5;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1120px; margin-inline: auto; }
+.mono { font-family: var(--font-mono); }
+
+/* header */
+.top {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 32px; padding-block: 22px; border-bottom: 1px solid var(--rule);
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em;
+  color: var(--ink); text-decoration: none;
+}
+.brand-mark {
+  display: inline-grid; place-items: center; width: 30px; height: 30px;
+  background: var(--mark); color: var(--on-mark);
+  font: 600 0.72rem var(--font-mono); letter-spacing: 0.02em;
+}
+.nav { display: flex; flex-wrap: wrap; gap: 6px 22px; font-family: var(--font-display); font-weight: 500; font-size: 0.95rem; }
+.nav a { color: var(--ink-2); text-decoration: none; padding-block: 4px; border-bottom: 2px solid transparent; transition: color .15s, border-color .15s; }
+.nav a:hover { color: var(--ink); border-bottom-color: var(--mark); }
+
+/* hero */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.9fr);
+  gap: 40px 56px; align-items: center;
+  padding-block: clamp(40px, 7vw, 88px) clamp(40px, 6vw, 72px);
+}
+.hero > * { min-width: 0; }
+.kicker {
+  font: 500 0.78rem var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-2); margin: 0 0 20px;
+}
+h1 {
+  font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 78;
+  font-size: clamp(3.5rem, 12vw, 8.2rem); line-height: 0.9; letter-spacing: -0.03em;
+  margin: 0 0 30px; text-wrap: balance;
+}
+.hl { display: inline-block; background: var(--mark); color: var(--on-mark); padding: 0.02em 0.12em 0.07em; margin-top: 0.06em; }
+.lede { font-size: clamp(1.1rem, 1.6vw, 1.25rem); line-height: 1.55; max-width: 56ch; margin: 0 0 26px; }
+.topics { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.topics li {
+  font: 500 0.74rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid var(--rule); padding: 6px 10px; color: var(--ink-2);
+}
+
+/* route figure */
+.route { margin: 0; }
+.route svg { display: block; width: 100%; height: auto; max-width: 100%; }
+.route figcaption { font: 400 0.78rem var(--font-mono); color: var(--ink-2); margin-top: 12px; letter-spacing: 0.02em; }
+.route .g { stroke: var(--rule); stroke-width: 1; opacity: 0.75; }
+.route .arc { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1 7; }
+.route .pt { fill: var(--mark); stroke: var(--ink); stroke-width: 2; }
+.route .lbl { font: 700 16px var(--font-display); fill: var(--ink); }
+.route .crd { font: 400 11px var(--font-mono); fill: var(--ink-2); letter-spacing: 0.03em; }
+.route .dist { font: 500 12px var(--font-mono); fill: var(--ink); letter-spacing: 0.04em; }
+
+/* section heads */
+section { scroll-margin-top: 16px; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 14px; }
+h2.sec {
+  font-family: var(--font-display); font-weight: 700; font-variation-settings: "wdth" 90;
+  font-size: clamp(1.9rem, 4vw, 2.6rem); letter-spacing: -0.02em; line-height: 1.1; margin: 0;
+}
+.meta { font: 500 0.76rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+
+/* thesis feature */
+#thesis { padding-block: 0 clamp(48px, 7vw, 88px); }
+.feature {
+  background: var(--feature); color: var(--feature-fg); border-radius: 6px;
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 36px 56px; align-items: end;
+  padding: clamp(24px, 5vw, 60px);
+}
+.feature > * { min-width: 0; }
+.feature .label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 500 0.76rem var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--feature-muted);
+  margin: 0 0 22px;
+}
+.feature .label::before { content: ""; width: 10px; height: 10px; background: var(--mark); }
+.feature h2 {
+  font-family: var(--font-display); font-weight: 700; font-variation-settings: "wdth" 85;
+  font-size: clamp(2.1rem, 5.2vw, 4rem); line-height: 1; letter-spacing: -0.025em; margin: 0 0 18px; text-wrap: balance;
+}
+.feature .sub { font-family: var(--font-text); font-style: italic; font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.4; color: var(--feature-muted); margin: 0; max-width: 46ch; }
+.feature .desc { margin: 0 0 26px; font-size: 1.06rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--mark); color: var(--on-mark); text-decoration: none;
+  font-family: var(--font-display); font-weight: 700; font-size: 1rem; letter-spacing: -0.005em;
+  padding: 14px 22px; transition: transform .15s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible { outline-color: var(--feature-fg); }
+
+/* writing ledger */
+#writing { padding-block: 0 clamp(48px, 7vw, 88px); }
+.ledger { border-bottom: 1px solid var(--rule); }
+.piece {
+  display: grid; grid-template-columns: 190px minmax(0, 1fr) 150px; gap: 10px 32px; align-items: start;
+  padding: 28px 12px; margin-inline: -12px; border-top: 1px solid var(--rule);
+  color: var(--ink); text-decoration: none; transition: background .15s;
+}
+.piece:hover { background: var(--surface); }
+.dl { display: flex; flex-direction: column; gap: 2px; padding-top: 6px; }
+.dl .place { font: 600 0.78rem var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+.dl .coord { font: 400 0.74rem var(--font-mono); color: var(--ink-2); letter-spacing: 0.02em; }
+.piece h3 {
+  font-family: var(--font-display); font-weight: 650; font-variation-settings: "wdth" 90;
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 8px; text-wrap: balance;
+  transition: color .15s;
+}
+.piece:hover h3 { color: var(--accent); }
+.piece p { margin: 0; color: var(--ink-2); max-width: 60ch; }
+.end { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; padding-top: 6px; }
+.tag { font: 500 0.7rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--rule); padding: 4px 8px; color: var(--ink-2); white-space: nowrap; }
+.go { font: 500 0.78rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.go span { display: inline-block; transition: transform .15s; }
+.piece:hover .go span { transform: translate(2px, -2px); }
+
+/* about */
+#about { padding-block: 0 clamp(48px, 7vw, 88px); }
+.about { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 40px clamp(32px, 6vw, 80px); align-items: start; }
+.about > * { min-width: 0; }
+.portrait {
+  position: relative; margin: 0; aspect-ratio: 4 / 5; max-width: 100%;
+  background: var(--surface); border: 1px solid var(--rule); overflow: hidden;
+  display: grid; place-items: center;
+}
+.portrait .qy {
+  font-family: var(--font-display); font-weight: 800; font-variation-settings: "wdth" 78;
+  font-size: clamp(5rem, 14vw, 9rem); letter-spacing: -0.04em; color: var(--ink); line-height: 1; padding-bottom: 8%;
+}
+.portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.portrait figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;
+  background: var(--mark); color: var(--on-mark); padding: 10px 14px;
+  font: 600 0.76rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.about-text p { margin: 0 0 1.1em; max-width: 60ch; }
+.about-text h2 { margin-bottom: 22px; }
+.pull {
+  font-family: var(--font-display); font-weight: 600; font-variation-settings: "wdth" 90;
+  font-size: clamp(1.4rem, 2.6vw, 2rem); line-height: 1.22; letter-spacing: -0.015em;
+  margin: 28px 0 0; max-width: 28em; text-wrap: balance;
+}
+.pull::before { content: "\201C"; color: var(--accent); margin-right: 0.04em; }
+.pull::after { content: "\201D"; color: var(--accent); margin-left: 0.04em; }
+
+/* contact */
+#contact { padding-block: 0 clamp(48px, 7vw, 88px); }
+.crow {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 6px 24px; align-items: center;
+  padding: 22px 0; border-top: 1px solid var(--rule);
+}
+.crows { border-bottom: 1px solid var(--rule); }
+.crow .k { font: 500 0.76rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
+.crow .v { font-family: var(--font-display); font-weight: 500; font-size: clamp(1.1rem, 2.2vw, 1.4rem); overflow-wrap: anywhere; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.crow a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--mark); transition: background .15s; }
+.crow a:hover { background: var(--mark); color: var(--on-mark); }
+.copy {
+  font: 500 0.72rem var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase;
+  background: transparent; color: var(--ink); border: 1px solid var(--ink); padding: 6px 10px; cursor: pointer; transition: background .15s, color .15s;
+}
+.copy:hover { background: var(--mark); color: var(--on-mark); border-color: var(--mark); }
+
+/* footer */
+.foot {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px;
+  padding-block: 26px 40px; border-top: 1px solid var(--rule);
+  font: 400 0.78rem var(--font-mono); color: var(--ink-2); letter-spacing: 0.03em;
+}
+.foot a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule); }
+.foot a:hover { color: var(--ink); border-bottom-color: var(--mark); }
+
+@media (max-width: 860px) {
+  .hero, .feature, .about { grid-template-columns: minmax(0, 1fr); }
+  .portrait { max-width: 340px; }
+  .feature { align-items: start; }
+  .route { max-width: 460px; }
+}
+@media (max-width: 720px) {
+  .piece { grid-template-columns: minmax(0, 1fr); gap: 8px; padding-block: 24px; }
+  .dl { flex-direction: row; flex-wrap: wrap; gap: 4px 12px; padding-top: 0; }
+  .end { flex-direction: row; align-items: center; justify-content: space-between; padding-top: 6px; }
+}
+@media (max-width: 560px) {
+  .crow { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="top">
+  <header class="top">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">QY</span>Quade Young</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#top">Home</a>
+      <a href="#thesis">Thesis</a>
+      <a href="#writing">Writing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.instagram.com/quadeypooo" target="_blank" rel="noopener">Instagram &#8599;</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <p class="kicker">Selected writing by Quade Young</p>
+        <h1>Quade&#8217;s<br><span class="hl">Journal</span></h1>
+        <p class="lede">I&#8217;m a multidisciplinary writer exploring culture, identity, travel, and digital media through personal storytelling and research. From algorithmic echo chambers to street culture and migration, I use a human-centered lens to make overlooked stories feel vivid and urgent.</p>
+        <ul class="topics">
+          <li>Culture</li><li>Identity</li><li>Travel</li><li>Digital media</li>
+        </ul>
+      </div>
+
+      <figure class="route">
+        <svg viewBox="0 0 420 320" role="img" aria-labelledby="route-title">
+          <title id="route-title">Prague and Istanbul, about 1,510 km apart</title>
+          <g class="g">
+            <line x1="50" y1="0" x2="50" y2="320"/><line x1="130" y1="0" x2="130" y2="320"/>
+            <line x1="210" y1="0" x2="210" y2="320"/><line x1="290" y1="0" x2="290" y2="320"/>
+            <line x1="370" y1="0" x2="370" y2="320"/>
+            <line x1="0" y1="30" x2="420" y2="30"/><line x1="0" y1="110" x2="420" y2="110"/>
+            <line x1="0" y1="190" x2="420" y2="190"/><line x1="0" y1="270" x2="420" y2="270"/>
+          </g>
+          <path class="arc" d="M95 55 Q 270 60 325 269"/>
+          <circle class="pt" cx="95" cy="55" r="7"/>
+          <circle class="pt" cx="325" cy="269" r="7"/>
+          <text class="lbl" x="80" y="55" text-anchor="end">Prague</text>
+          <text class="crd" x="80" y="72" text-anchor="end">50.0755&#176; N</text>
+          <text class="crd" x="80" y="86" text-anchor="end">14.4378&#176; E</text>
+          <text class="lbl" x="340" y="274">Istanbul</text>
+          <text class="crd" x="340" y="291">41.0082&#176; N</text>
+          <text class="crd" x="340" y="305">28.9784&#176; E</text>
+          <text class="dist" x="272" y="114">&#8776; 1,510 km</text>
+        </svg>
+        <figcaption>Three of the pieces below are set in Prague and Istanbul.</figcaption>
+      </figure>
+    </div>
+
+    <section id="thesis" aria-labelledby="thesis-title">
+      <div class="feature">
+        <div>
+          <p class="label">Undergraduate Thesis</p>
+          <h2 id="thesis-title">Rick Steves and the Making of the Middle-Class Tourist</h2>
+          <p class="sub">How Rick Steves Redefined Travel as a Middle-Class Identity and the Structural Barriers That Persist</p>
+        </div>
+        <div>
+          <p class="desc">This thesis explores how Rick Steves uses television, guidebooks, and digital media to teach Americans how to travel, interpret Europe, and perform a specific middle-class identity.</p>
+          <a class="btn" href="https://quadelyoung.github.io/Quades-Journal/RickStevesThesis.pdf" target="_blank" rel="noopener">Read My Thesis <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing" aria-labelledby="writing-title">
+      <div class="sec-head">
+        <h2 class="sec" id="writing-title">Writing</h2>
+        <span class="meta">5 pieces &middot; PDF</span>
+      </div>
+      <div class="ledger">
+        <a class="piece" href="https://quadelyoung.github.io/Quades-Journal/Mental%20Illness%20&amp;%20Healthcare%20Issues%20FC.pdf" target="_blank" rel="noopener">
+          <div class="dl"><span class="place">United States</span><span class="coord">Healthcare access</span></div>
+          <div><h3>Mental Illness and Healthcare Issues</h3><p>A sociological look at the relationship between mental health, stigmatization, and access to healthcare in America.</p></div>
+          <div class="end"><span class="tag">Sociology</span><span class="go">Read <span aria-hidden="true">&#8599;</span></span></div>
+        </a>
+        <a class="piece" href="https://quadelyoung.github.io/Quades-Journal/Pick%20Up%20Games%20in%20Prague..%20Or%20Friends%3F.pdf" target="_blank" rel="noopener">
+          <div class="dl"><span class="place">Prague</span><span class="coord">50.0755&#176; N, 14.4378&#176; E</span></div>
+          <div><h3>Pick Up Games in Prague&#8230; Or Friends?</h3><p>A personal reflection on making friends and finding belonging through street basketball in a foreign city.</p></div>
+          <div class="end"><span class="tag">Personal essay</span><span class="go">Read <span aria-hidden="true">&#8599;</span></span></div>
+        </a>
+        <a class="piece" href="https://quadelyoung.github.io/Quades-Journal/Tasting%20Italy%20in%20a%20Prague%20Courtyard.pdf" target="_blank" rel="noopener">
+          <div class="dl"><span class="place">Prague</span><span class="coord">50.0755&#176; N, 14.4378&#176; E</span></div>
+          <div><h3>Tasting Italy in a Prague Courtyard</h3><p>A sensory journey through Italian cuisine guided by a retired chef, all within a Czech university courtyard.</p></div>
+          <div class="end"><span class="tag">Food &amp; culture</span><span class="go">Read <span aria-hidden="true">&#8599;</span></span></div>
+        </a>
+        <a class="piece" href="https://quadelyoung.github.io/Quades-Journal/The%20Most%20Relaxing%20Places%20to%20Unwind%20with%20a%20Drink%20in%20Istanbul.pdf" target="_blank" rel="noopener">
+          <div class="dl"><span class="place">Istanbul</span><span class="coord">41.0082&#176; N, 28.9784&#176; E</span></div>
+          <div><h3>The Most Relaxing Places to Unwind with a Drink in Istanbul</h3><p>Travel writing exploring four of Istanbul&#8217;s best scenic and relaxing drink spots, from rooftops to waterfront cafés.</p></div>
+          <div class="end"><span class="tag">Travel writing</span><span class="go">Read <span aria-hidden="true">&#8599;</span></span></div>
+        </a>
+        <a class="piece" href="https://quadelyoung.github.io/Quades-Journal/Trapped%20in%20the%20Feed_%20Echo%20Chambers,%20Algorithmic%20Media,%20and%20the%20Crisis%20of%20Representation.pdf" target="_blank" rel="noopener">
+          <div class="dl"><span class="place">Online</span><span class="coord">Social media</span></div>
+          <div><h3>Trapped in the Feed: Echo Chambers, Algorithmic Media, and the Crisis of Representation</h3><p>A media theory thesis that analyzes how social media echo chambers distort truth, identity, and public discourse.</p></div>
+          <div class="end"><span class="tag">Media theory</span><span class="go">Read <span aria-hidden="true">&#8599;</span></span></div>
+        </a>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="about">
+        <figure class="portrait">
+          <span class="qy" aria-hidden="true">QY</span>
+          <img src="CountryQuade.png" alt="Quade Young standing in Prague with a backpack and city skyline behind him">
+          <figcaption>Quade Young</figcaption>
+        </figure>
+        <div class="about-text">
+          <h2 class="sec" id="about-title">About me</h2>
+          <p>Hey, I&#8217;m Quade &#8212; a writer passionate about telling stories that reveal something real, whether it&#8217;s about digital media, street basketball in Prague, travel culture in Istanbul, or the everyday systems that shape our lives.</p>
+          <p>I write to better understand the people and places around me. My work blends research, personal perspective, and narrative storytelling to make culture, identity, and lived experience feel tangible.</p>
+          <p>In every piece I write, I try to keep it authentic. That means emotion, context, and a clear point of view.</p>
+          <p class="pull">I believe writing isn&#8217;t just about what you say &#8212; it&#8217;s how you make people feel when they read it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <div class="sec-head">
+        <h2 class="sec" id="contact-title">Contact</h2>
+      </div>
+      <div class="crows">
+        <div class="crow">
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:quadeyoung@gmail.com" id="email-text">quadeyoung@gmail.com</a><button class="copy" id="copy-email" type="button">Copy</button></span>
+        </div>
+        <div class="crow">
+          <span class="k">LinkedIn</span>
+          <span class="v"><a href="https://www.linkedin.com/in/quade-young-517315279" target="_blank" rel="noopener">linkedin.com/in/quade-young-517315279</a></span>
+        </div>
+        <div class="crow">
+          <span class="k">Instagram</span>
+          <span class="v"><a href="https://www.instagram.com/quadeypooo" target="_blank" rel="noopener">@quadeypooo</a></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>&#169; 2026 Quade Young | All Rights Reserved</span>
+    <a href="#top">Back to top &#8593;</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var el = document.getElementById('email-text');
+  if (!btn || !el) return;
+  var label = btn.textContent;
+  function flash(msg) {
+    btn.textContent = msg;
+    setTimeout(function () { btn.textContent = label; }, 1800);
+  }
+  function selectText() {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(el);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      flash('Selected');
+    } catch (e) {}
+  }
+  btn.addEventListener('click', function () {
+    var text = el.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { flash('Copied'); }, selectText);
+    } else {
+      selectText();
+    }
+  });
+})();
+</script>
+</body>
+</html>
